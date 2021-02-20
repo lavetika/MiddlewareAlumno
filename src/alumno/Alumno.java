@@ -15,19 +15,13 @@ public class Alumno {
 
     public String nombre;
     public String carrera;
-    public String fechaNacimiento;
     public String id;
-    HashMap<String, Integer> materias;
 
-    public Alumno(String nombre, String carrera, String fechaNacimiento, String id, HashMap<String, Integer> materias) {
+    public Alumno(String nombre, String carrera, String id) {
         this.nombre = nombre;
         this.carrera = carrera;
-        this.fechaNacimiento = fechaNacimiento;
         this.id = id;
-        this.materias = materias;
     }
-    
-    
 
     public String getNombre() {
         return nombre;
@@ -45,13 +39,6 @@ public class Alumno {
         this.carrera = carrera;
     }
 
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
 
     public String getId() {
         return id;
@@ -61,13 +48,7 @@ public class Alumno {
         this.id = id;
     }
 
-    public HashMap<String, Integer> getMaterias() {
-        return materias;
-    }
 
-    public void setMaterias(HashMap<String, Integer> materias) {
-        this.materias = materias;
-    }
     
     
     
