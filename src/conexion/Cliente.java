@@ -48,6 +48,8 @@ public class Cliente {
             System.out.println("Ocurrió un error: " + ex.getMessage());
         }
     }
+    
+    
 
     private int esperarDatos(InputStream in) throws IOException {
 
