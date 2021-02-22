@@ -22,6 +22,8 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
      */
     public MainForm() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Sistema Alumno");
         this.clienteServer = new Cliente(this);
     }
 
@@ -48,21 +50,38 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         lblId = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblCarrera = new javax.swing.JLabel();
+        lblEncabezado = new javax.swing.JLabel();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Alumno");
+        setMaximumSize(new java.awt.Dimension(487, 468));
+        setMinimumSize(new java.awt.Dimension(487, 468));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setToolTipText("204722");
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
         txtId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtIdKeyTyped(evt);
             }
         });
+        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 200, 31));
 
-        lblNombreSistema.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblNombreSistema.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblNombreSistema.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreSistema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreSistema.setText("Sistema Alumno");
+        getContentPane().add(lblNombreSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 250, -1));
 
+        btnEnviar.setBackground(new java.awt.Color(255, 204, 0));
+        btnEnviar.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnEnviar.setForeground(new java.awt.Color(0, 0, 0));
         btnEnviar.setText("Enviar");
         btnEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -74,100 +93,58 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
                 btnEnviarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
-        lblInstruccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblInstruccion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         lblInstruccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInstruccion.setText("Texto plano a enviar (lo del alumno se manda con comas): ");
+        getContentPane().add(lblInstruccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 46, 487, -1));
 
-        lblTituloRecibido.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblTituloRecibido.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         lblTituloRecibido.setText("Recibido:");
+        getContentPane().add(lblTituloRecibido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 80, -1));
 
         txtRecibido.setEditable(false);
+        txtRecibido.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtRecibido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 370, 34));
 
+        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreKeyTyped(evt);
             }
         });
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 200, 33));
 
+        txtCarrera.setBackground(new java.awt.Color(255, 255, 255));
         txtCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCarreraKeyTyped(evt);
             }
         });
+        getContentPane().add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 200, 31));
 
+        lblTituloId.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblTituloId.setText("ID");
+        getContentPane().add(lblTituloId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
+        lblTitutloNombre.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblTitutloNombre.setText("Nombre Completo");
+        getContentPane().add(lblTitutloNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
+        lblTituloCarrera.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblTituloCarrera.setText("Carrera");
+        getContentPane().add(lblTituloCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+        getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 129, 16));
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 226, 234, 20));
+        getContentPane().add(lblCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 129, 20));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNombreSistema, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblInstruccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(lblTituloRecibido))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTituloId)
-                            .addComponent(lblTitutloNombre)
-                            .addComponent(lblTituloCarrera))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(txtRecibido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 30, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEnviar)
-                .addGap(220, 220, 220))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNombreSistema)
-                .addGap(11, 11, 11)
-                .addComponent(lblInstruccion)
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTituloId))
-                .addGap(1, 1, 1)
-                .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitutloNombre))
-                .addGap(1, 1, 1)
-                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTituloCarrera))
-                .addGap(1, 1, 1)
-                .addComponent(lblCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEnviar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(lblTituloRecibido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtRecibido, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
-        );
+        lblEncabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/FED148.jpeg"))); // NOI18N
+        lblEncabezado.setText("jLabel1");
+        getContentPane().add(lblEncabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 90));
+
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blanco.jpg"))); // NOI18N
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -180,9 +157,9 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         } else {
             lblId.setText("*Ingresa tu ID");
             lblId.setForeground(Color.red);
-            lblNombre.setText("Ingresa tu nombre");
+            lblNombre.setText("*Ingresa tu nombre");
             lblNombre.setForeground(Color.red);
-            lblCarrera.setText("Ingresa tu carrera");
+            lblCarrera.setText("*Ingresa tu carrera");
             lblCarrera.setForeground(Color.red);
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
@@ -231,6 +208,10 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         }
     }//GEN-LAST:event_txtCarreraKeyTyped
 
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
     @Override
     public void update(String contenido) {
         txtRecibido.setText(contenido);
@@ -250,6 +231,8 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;
     private javax.swing.JLabel lblCarrera;
+    private javax.swing.JLabel lblEncabezado;
+    private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblInstruccion;
     private javax.swing.JLabel lblNombre;
