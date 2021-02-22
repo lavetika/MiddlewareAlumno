@@ -7,23 +7,23 @@ package gui;
 
 import conexion.Cliente;
 import dominio.Alumno;
+import java.awt.Color;
 
 /**
  *
  * @author Invitado
  */
-public class MainForm extends javax.swing.JFrame implements GUIObserver{
+public class MainForm extends javax.swing.JFrame implements GUIObserver {
 
     private final Cliente clienteServer;
-    
+
     /**
      * Creates new form MainForm
      */
     public MainForm() {
         initComponents();
-        this.clienteServer=new Cliente(this);
+        this.clienteServer = new Cliente(this);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,28 +35,33 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver{
     private void initComponents() {
 
         txtId = new javax.swing.JTextField();
-        lblInstruccion = new javax.swing.JLabel();
+        lblNombreSistema = new javax.swing.JLabel();
         btnEnviar = new javax.swing.JButton();
-        lblInstruccion1 = new javax.swing.JLabel();
+        lblInstruccion = new javax.swing.JLabel();
         lblTituloRecibido = new javax.swing.JLabel();
         txtRecibido = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtCarrera = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblTituloId = new javax.swing.JLabel();
+        lblTitutloNombre = new javax.swing.JLabel();
+        lblTituloCarrera = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblCarrera = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Alumno");
 
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
+        txtId.setToolTipText("204722");
+        txtId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdKeyTyped(evt);
             }
         });
 
-        lblInstruccion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblInstruccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblInstruccion.setText("Sistema Alumno");
+        lblNombreSistema.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblNombreSistema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNombreSistema.setText("Sistema Alumno");
 
         btnEnviar.setText("Enviar");
         btnEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,112 +75,189 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver{
             }
         });
 
-        lblInstruccion1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblInstruccion1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblInstruccion1.setText("Texto plano a enviar (lo del alumno se manda con comas): ");
+        lblInstruccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblInstruccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInstruccion.setText("Texto plano a enviar (lo del alumno se manda con comas): ");
 
         lblTituloRecibido.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTituloRecibido.setText("Recibido:");
 
-        jLabel1.setText("ID");
+        txtRecibido.setEditable(false);
 
-        jLabel2.setText("NOMBRE");
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
-        jLabel3.setText("CARRERA");
+        txtCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCarreraKeyTyped(evt);
+            }
+        });
+
+        lblTituloId.setText("ID");
+
+        lblTitutloNombre.setText("Nombre Completo");
+
+        lblTituloCarrera.setText("Carrera");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblNombreSistema, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblInstruccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblInstruccion1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
+                .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(btnEnviar)
-                            .addGap(81, 81, 81))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)))
-                            .addGap(27, 27, 27)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtCarrera)
-                                .addComponent(txtNombre)
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(lblTituloRecibido)
-                    .addComponent(txtRecibido, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(lblTituloRecibido))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTituloId)
+                            .addComponent(lblTitutloNombre)
+                            .addComponent(lblTituloCarrera))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(txtRecibido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEnviar)
+                .addGap(220, 220, 220))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblInstruccion)
+                .addComponent(lblNombreSistema)
                 .addGap(11, 11, 11)
-                .addComponent(lblInstruccion1)
+                .addComponent(lblInstruccion)
                 .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(33, 33, 33)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(btnEnviar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jLabel2)
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTituloId))
+                .addGap(1, 1, 1)
+                .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitutloNombre))
+                .addGap(1, 1, 1)
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTituloCarrera))
+                .addGap(1, 1, 1)
+                .addComponent(lblCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEnviar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(lblTituloRecibido)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtRecibido, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addGap(49, 49, 49))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        
+        if (validar()) {
+            txtRecibido.setText("Esperando al servidor...");
+            Alumno alumno = new Alumno(txtId.getText(), txtNombre.getText(), txtCarrera.getText());
+            clienteServer.enviar(alumno.toString());
+        } else {
+            lblId.setText("*Ingresa tu ID");
+            lblId.setForeground(Color.red);
+            lblNombre.setText("Ingresa tu nombre");
+            lblNombre.setForeground(Color.red);
+            lblCarrera.setText("Ingresa tu carrera");
+            lblCarrera.setForeground(Color.red);
+        }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
-    private void btnEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarMouseClicked
-        txtRecibido.setText("Esperando al servidor...");
-        btnEnviar.setEnabled(false);
-        Alumno alumno = new Alumno(txtId.getText(),txtNombre.getText(), txtCarrera.getText());
-        clienteServer.enviar(alumno.toString());
-    }//GEN-LAST:event_btnEnviarMouseClicked
-
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
-
-    
-    
-    @Override
-    public void update(String contenido) {
-        btnEnviar.setEnabled(true);
-        txtRecibido.setText(contenido);
+    public boolean validar() {
+        return !txtNombre.getText().isEmpty() && !txtId.getText().isEmpty() && !txtCarrera.getText().isEmpty();
     }
 
+    private void btnEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarMouseClicked
+
+        if (validar()) {
+            btnEnviar.setEnabled(false);
+            txtId.setEditable(false);
+            txtNombre.setEditable(false);
+            txtCarrera.setEditable(false);
+        } else {
+            btnEnviar.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnEnviarMouseClicked
+
+    private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
+        char a = evt.getKeyChar();
+        if ((txtId.getText().length() > 6) || !Character.isDigit(a)) {
+            evt.consume();
+        } else {
+            lblId.setText("");
+        }
+    }//GEN-LAST:event_txtIdKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char a = evt.getKeyChar();
+        if ((txtNombre.getText().length() >= 101) || (!Character.isLetter(a)&& a != ' ')) {
+            evt.consume();
+        } else {
+            lblNombre.setText("");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtCarreraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCarreraKeyTyped
+        char a = evt.getKeyChar();
+        if ((txtCarrera.getText().length() >= 101) || (!Character.isLetter(a)&& a != ' ')) {
+            evt.consume();
+        } else {
+            lblCarrera.setText("");
+            
+        }
+    }//GEN-LAST:event_txtCarreraKeyTyped
+
+    @Override
+    public void update(String contenido) {
+        txtRecibido.setText(contenido);
+        reset();
+    }
+
+    public void reset(){
+        btnEnviar.setEnabled(true);
+        txtId.setEditable(true);
+        txtNombre.setEditable(true);
+        txtCarrera.setEditable(true);
+        txtCarrera.setText("");
+        txtId.setText("");
+        txtNombre.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblCarrera;
+    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblInstruccion;
-    private javax.swing.JLabel lblInstruccion1;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombreSistema;
+    private javax.swing.JLabel lblTituloCarrera;
+    private javax.swing.JLabel lblTituloId;
     private javax.swing.JLabel lblTituloRecibido;
+    private javax.swing.JLabel lblTitutloNombre;
     private javax.swing.JTextField txtCarrera;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
