@@ -22,6 +22,8 @@ public class Cliente {
     }
 
     public void enviar(String contenido) {
+        System.out.println("El sistema Alumnos esta conectado al servidor.");
+        System.out.println("----");
         OutputStream out = null;
         try {
             Socket socket = new Socket("127.0.0.1", 9000);
@@ -30,6 +32,7 @@ public class Cliente {
             byte[] bytes = serializar(contenido);
 
             System.out.println("Enviando: " + contenido);
+            System.out.println("----");
 
             out.write(bytes);
             out.flush();
@@ -39,11 +42,15 @@ public class Cliente {
             in.read(bytes);
 
             String recibido = deserializar(bytes);
+            System.out.println("Recibido: " + recibido);
+            System.out.println("----");
             notificar(recibido);
 
             out.close();
             in.close();
             socket.close();
+            System.out.println("El sistema Alumnos recibio la información y se desconectó del servidor.");
+            System.out.println("----");
         } catch (Exception ex) {
             System.out.println("Ocurrió un error: " + ex.getMessage());
         }
