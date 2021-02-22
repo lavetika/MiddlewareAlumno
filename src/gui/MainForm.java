@@ -59,7 +59,6 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         setMinimumSize(new java.awt.Dimension(487, 468));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setToolTipText("204722");
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,14 +73,12 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 200, 31));
 
         lblNombreSistema.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        lblNombreSistema.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreSistema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreSistema.setText("Sistema Alumno");
         getContentPane().add(lblNombreSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 250, -1));
 
         btnEnviar.setBackground(new java.awt.Color(255, 204, 0));
         btnEnviar.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        btnEnviar.setForeground(new java.awt.Color(0, 0, 0));
         btnEnviar.setText("Enviar");
         btnEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,7 +105,6 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         txtRecibido.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(txtRecibido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 370, 34));
 
-        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreKeyTyped(evt);
@@ -116,7 +112,6 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         });
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 200, 33));
 
-        txtCarrera.setBackground(new java.awt.Color(255, 255, 255));
         txtCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCarreraKeyTyped(evt);
