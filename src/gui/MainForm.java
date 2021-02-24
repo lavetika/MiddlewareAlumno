@@ -7,7 +7,7 @@ package gui;
 
 import conexion.Cliente;
 import dominio.Alumno;
-import java.awt.Color;
+import java.awt.Color; 
 
 /**
  *
@@ -57,7 +57,6 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         setTitle("Sistema Alumno");
         setMaximumSize(new java.awt.Dimension(487, 468));
         setMinimumSize(new java.awt.Dimension(487, 468));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtId.setToolTipText("204722");
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -70,12 +69,10 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
                 txtIdKeyTyped(evt);
             }
         });
-        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 200, 31));
 
         lblNombreSistema.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblNombreSistema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreSistema.setText("Sistema Alumno");
-        getContentPane().add(lblNombreSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 250, -1));
 
         btnEnviar.setBackground(new java.awt.Color(255, 204, 0));
         btnEnviar.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -90,56 +87,131 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
                 btnEnviarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
         lblInstruccion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         lblInstruccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInstruccion.setText("Texto plano a enviar (lo del alumno se manda con comas): ");
-        getContentPane().add(lblInstruccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 46, 487, -1));
 
         lblTituloRecibido.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         lblTituloRecibido.setText("Recibido:");
-        getContentPane().add(lblTituloRecibido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 80, -1));
 
         txtRecibido.setEditable(false);
         txtRecibido.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txtRecibido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 370, 34));
 
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreKeyTyped(evt);
             }
         });
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 200, 33));
 
         txtCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCarreraKeyTyped(evt);
             }
         });
-        getContentPane().add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 200, 31));
 
         lblTituloId.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblTituloId.setText("ID");
-        getContentPane().add(lblTituloId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
         lblTitutloNombre.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblTitutloNombre.setText("Nombre Completo");
-        getContentPane().add(lblTitutloNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         lblTituloCarrera.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblTituloCarrera.setText("Carrera");
-        getContentPane().add(lblTituloCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
-        getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 129, 16));
-        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 226, 234, 20));
-        getContentPane().add(lblCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 129, 20));
 
         lblEncabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/FED148.jpeg"))); // NOI18N
         lblEncabezado.setText("jLabel1");
-        getContentPane().add(lblEncabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 90));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blanco.jpg"))); // NOI18N
-        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 470));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(lblTituloCarrera))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(lblCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(txtRecibido, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(lblTituloId))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(lblNombreSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(lblFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(lblTituloRecibido, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(lblEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(btnEnviar))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(lblTitutloNombre))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(lblInstruccion)
+                .addGap(60, 60, 60)
+                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(lblTituloCarrera)
+                .addGap(1, 1, 1)
+                .addComponent(lblCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addComponent(txtRecibido, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(lblTituloId))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblNombreSistema))
+            .addComponent(lblFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(370, 370, 370)
+                .addComponent(lblTituloRecibido))
+            .addComponent(lblEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(310, 310, 310)
+                .addComponent(btnEnviar))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(lblTitutloNombre))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
