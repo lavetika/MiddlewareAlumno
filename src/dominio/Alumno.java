@@ -20,6 +20,13 @@ public class Alumno {
         this.id = id;
     }
 
+    public Alumno(String id, String carrera) {
+        this.carrera = carrera;
+        this.id = id;
+    }
+
+   
+
     public String getNombre() {
         return nombre;
     }
@@ -47,9 +54,6 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return id + "," + nombre + "," + carrera + ",";
-    }
-
-
-    
+        return id + "," + carrera;
+    }    
 }

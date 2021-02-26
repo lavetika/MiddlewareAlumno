@@ -42,10 +42,8 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         lblInstruccion = new javax.swing.JLabel();
         lblTituloRecibido = new javax.swing.JLabel();
         txtRecibido = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
         txtCarrera = new javax.swing.JTextField();
         lblTituloId = new javax.swing.JLabel();
-        lblTitutloNombre = new javax.swing.JLabel();
         lblTituloCarrera = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
@@ -90,7 +88,7 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
                 btnEnviarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
+        getContentPane().add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
 
         lblInstruccion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         lblInstruccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,31 +103,20 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         txtRecibido.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(txtRecibido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 370, 34));
 
-        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 200, 33));
-
         txtCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCarreraKeyTyped(evt);
             }
         });
-        getContentPane().add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 200, 31));
+        getContentPane().add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 200, 31));
 
         lblTituloId.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblTituloId.setText("ID");
         getContentPane().add(lblTituloId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
-        lblTitutloNombre.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        lblTitutloNombre.setText("Nombre Completo");
-        getContentPane().add(lblTitutloNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
-
         lblTituloCarrera.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblTituloCarrera.setText("Carrera");
-        getContentPane().add(lblTituloCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+        getContentPane().add(lblTituloCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
         getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 129, 16));
         getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 226, 234, 20));
         getContentPane().add(lblCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 129, 20));
@@ -147,20 +134,18 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         if (validar()) {
             txtRecibido.setText("Esperando al servidor...");
-            Alumno alumno = new Alumno(txtId.getText(), txtNombre.getText(), txtCarrera.getText());
+            Alumno alumno = new Alumno(txtId.getText(), txtCarrera.getText());
             clienteServer.enviar(alumno.toString());
         } else {
             lblId.setText("*Ingresa tu ID");
             lblId.setForeground(Color.red);
-            lblNombre.setText("*Ingresa tu nombre");
-            lblNombre.setForeground(Color.red);
             lblCarrera.setText("*Ingresa tu carrera");
             lblCarrera.setForeground(Color.red);
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     public boolean validar() {
-        return !txtNombre.getText().isEmpty() && !txtId.getText().isEmpty() && !txtCarrera.getText().isEmpty();
+        return txtId.getText().length()==11 && txtCarrera.getText().length()==3;
     }
 
     private void btnEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarMouseClicked
@@ -168,7 +153,6 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
         if (validar()) {
             btnEnviar.setEnabled(false);
             txtId.setEditable(false);
-            txtNombre.setEditable(false);
             txtCarrera.setEditable(false);
         } else {
             btnEnviar.setEnabled(true);
@@ -177,29 +161,19 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
 
     private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
         char a = evt.getKeyChar();
-        if ((txtId.getText().length() > 6) || !Character.isDigit(a)) {
+        if ((txtId.getText().length() >= 11) || !Character.isDigit(a)) {
             evt.consume();
         } else {
             lblId.setText("");
         }
     }//GEN-LAST:event_txtIdKeyTyped
 
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        char a = evt.getKeyChar();
-        if ((txtNombre.getText().length() >= 101) || (!Character.isLetter(a)&& a != ' ')) {
-            evt.consume();
-        } else {
-            lblNombre.setText("");
-        }
-    }//GEN-LAST:event_txtNombreKeyTyped
-
     private void txtCarreraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCarreraKeyTyped
         char a = evt.getKeyChar();
-        if ((txtCarrera.getText().length() >= 101) || (!Character.isLetter(a)&& a != ' ')) {
+        if ((txtCarrera.getText().length() >= 3) || (!Character.isLetter(a)&& a != ' ')) {
             evt.consume();
         } else {
             lblCarrera.setText("");
-            
         }
     }//GEN-LAST:event_txtCarreraKeyTyped
 
@@ -216,11 +190,9 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
     public void reset(){
         btnEnviar.setEnabled(true);
         txtId.setEditable(true);
-        txtNombre.setEditable(true);
         txtCarrera.setEditable(true);
         txtCarrera.setText("");
         txtId.setText("");
-        txtNombre.setText("");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -235,10 +207,8 @@ public class MainForm extends javax.swing.JFrame implements GUIObserver {
     private javax.swing.JLabel lblTituloCarrera;
     private javax.swing.JLabel lblTituloId;
     private javax.swing.JLabel lblTituloRecibido;
-    private javax.swing.JLabel lblTitutloNombre;
     private javax.swing.JTextField txtCarrera;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtRecibido;
     // End of variables declaration//GEN-END:variables
 }

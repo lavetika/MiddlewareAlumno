@@ -13,8 +13,10 @@ import java.util.logging.Logger;
  *
  * @author Invitado
  */
-public class Cliente {
+public class Cliente implements Framer{
 
+    private static final int LONGITUD_ENTRADA=25;
+    private static final int LONGITUD_SALIDA=15;
     private final GUIObserver observer;
 
     public Cliente(GUIObserver observer) {
@@ -34,12 +36,13 @@ public class Cliente {
             System.out.println("Enviando: " + contenido);
             System.out.println("----");
 
-            out.write(bytes);
-            out.flush();
+            frameMsgLength(bytes,out);   
+            
+//            out.write(bytes);
+//            out.flush();
 
             InputStream in = socket.getInputStream();
-            bytes = new byte[esperarDatos(in)];
-            in.read(bytes);
+            bytes = nextMsgLength(in);
 
             String recibido = deserializar(bytes);
             System.out.println("Recibido: " + recibido);
@@ -79,5 +82,22 @@ public class Cliente {
 
     private void notificar(String contenido) {
         observer.update(contenido);
+    }
+
+    @Override
+    public void frameMsgLength(byte[] mensaje, OutputStream out) throws IOException {
+        if(mensaje.length!=LONGITUD_SALIDA){
+            throw new IOException("El tamaño del mensaje no es de la longitud establecida: "+LONGITUD_SALIDA);
+        }
+        
+        out.write(mensaje);
+        out.flush();
+    }
+
+    @Override
+    public byte[] nextMsgLength(InputStream in) throws IOException {
+        byte[] salida=new byte[LONGITUD_ENTRADA];
+        in.read(salida);
+        return salida;
     }
 }
