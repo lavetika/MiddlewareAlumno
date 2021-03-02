@@ -1,22 +1,22 @@
 package conexion;
 
 import gui.GUIObserver;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Invitado
  */
-public class Cliente implements Framer{
+public class Cliente implements Framer {
 
-    private static final int LONGITUD_ENTRADA=25;
-    private static final int LONGITUD_SALIDA=15;
+    private static final int[] LONGITUDES_SALIDA = {11, 3};
+    private static final int[] LONGITUDES_ENTRADA = {3, 2, 3, 2};
+
     private final GUIObserver observer;
 
     public Cliente(GUIObserver observer) {
@@ -36,11 +36,10 @@ public class Cliente implements Framer{
             System.out.println("Enviando: " + contenido);
             System.out.println("----");
 
-            frameMsgLength(bytes,out);   
-            
+            frameMsgLength(bytes, out);
+
 //            out.write(bytes);
 //            out.flush();
-
             InputStream in = socket.getInputStream();
             bytes = nextMsgLength(in);
 
@@ -58,8 +57,6 @@ public class Cliente implements Framer{
             System.out.println("Ocurrió un error: " + ex.getMessage());
         }
     }
-    
-    
 
     private int esperarDatos(InputStream in) throws IOException {
 
@@ -71,7 +68,7 @@ public class Cliente implements Framer{
         }
         return tam;
     }
-    
+
     private static byte[] serializar(String cadena) throws IOException {
         return cadena.getBytes();
     }
@@ -86,18 +83,30 @@ public class Cliente implements Framer{
 
     @Override
     public void frameMsgLength(byte[] mensaje, OutputStream out) throws IOException {
-        if(mensaje.length!=LONGITUD_SALIDA){
-            throw new IOException("El tamaño del mensaje no es de la longitud establecida: "+LONGITUD_SALIDA);
+        int longitud = 0;
+        for (int i : LONGITUDES_SALIDA) {
+            longitud += i;
         }
-        
+        if (mensaje.length != longitud) {
+            throw new IOException("El tamaño del mensaje no es de la longitud establecida: " + longitud);
+        }
         out.write(mensaje);
         out.flush();
     }
 
     @Override
     public byte[] nextMsgLength(InputStream in) throws IOException {
-        byte[] salida=new byte[LONGITUD_ENTRADA];
-        in.read(salida);
-        return salida;
+        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+
+        for (int j : LONGITUDES_ENTRADA) {
+            for (int i = 0; i < j; i++) {
+                int b=in.read();
+                System.out.println(b);
+                baos.write(b);
+            }
+            baos.write(',');
+        }
+        
+        return baos.toByteArray();
     }
 }
